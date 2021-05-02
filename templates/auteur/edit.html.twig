@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification des Auteurs{% endblock %}
+
+{% block body %}
+    <style>
+        .btnmodif{
+            margin-left: 15px;
+        }
+    </style>
+    <h1 class="text-center mt-5">Edit Auteur</h1>
+
+    <div class="container  mt-5">
+        <a class="btn btn-success btnmodif" href="{{ path('auteur_index') }}">Retour à liste</a>
+    {{ include('auteur/_form.html.twig', {'button_label': 'Editer'}) }}
+
+    </div>
+{% endblock %}

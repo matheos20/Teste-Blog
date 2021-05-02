@@ -1,0 +1,29 @@
+<header class="item header margin-top-0">
+    <div class="wrapper">
+        <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+            <div class="container menu">
+                <div id="navbar-collapse-02" class="collapse navbar-collapse show">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div class="navbar-header">
+                                <a href="{{ path('home') }}" class="navbar-brand brand"> BLOG </a>
+                            </div>
+                        </li>
+                        <li class="propClone"><a href="{{ path('home') }}">Acceuil</a></li>
+                        {% if app.user %}
+                            <li class="propClone"><a href="{{ path('article_index') }}">Article</a></li>
+                            {% if is_granted(accountType.roleAdmin) %}
+                                <li class="propClone"><a href="{{ path('auteur_index') }}">Auteur</a></li>
+                            {% endif %}
+                            <li class="propClone"><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                        {% else %}
+                            <li class="propClone"><a href="{{ path('security_registration') }}">S'inscrire</a></li>
+                            <li class="propClone"><a href="{{ path('app_login') }}">Connexion</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% include 'banner.html.twig' %}
+    </div>
+</header>

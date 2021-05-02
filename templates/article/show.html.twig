@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <style>
+        .show{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .del{
+            margin-top: 15px;
+        }
+        .btn{
+            margin-left: 5px;
+        }
+    </style>
+    <h1 class="text-center mt-5">Article</h1>
+<div class="container  mt-5">
+    <table class="table">
+        <tbody>
+             <tr class="table-active">
+                <th class="table-warning">Titre</th>
+                <td>{{ article.Titre }}</td>
+            </tr>
+             <tr class="table-active">
+                <th class="table-warning">Texte</th>
+                <td>{{ article.Texte }}</td>
+            </tr>
+             <tr class="table-active">
+                <th class="table-warning">CreatedAt</th>
+                <td>{{ article.created ? article.created|date('d M Y') : '' }}</td>
+            </tr>
+             <tr class="table-active">
+                <th class="table-warning">UpdateAt</th>
+                <td>{{ article.updated ? article.updated|date('d M Y') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="show">
+        <a class="btn btn-success" href="{{ path('article_index') }}">Retour à list</a>
+
+        <a class="btn btn-primary" href="{{ path('article_edit', {'id': article.id}) }}">edite</a>
+
+        <a class=" del">{{ include('article/_delete_form.html.twig') }}</a>
+    </div>
+
+</div>
+{% endblock %}

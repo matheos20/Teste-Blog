@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog - Détails{% endblock %}
+
+{% block body %}
+    <section class="item content">
+        <div class="container toparea">
+            <div class="underlined-title">
+                <div class="editContent">
+                    <h1 class="text-center latestitems">{{ article.Titre }}</h1>
+                </div>
+                <div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="productbox">
+                        {#<img src="images/product2-2.jpg" alt="">#}
+                        <div class="clearfix">
+                        </div>
+                        <br/>
+                        <div class="product-details text-left">
+                            <p>
+                                {{ article.Texte }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="properties-box">
+                        <ul class="unstyle">
+                            <li><b class="propertyname">Auteur:</b> {{ article.auteur.fullname }}</li>
+                            <li><b class="propertyname">Date création:</b> {{ article.created ? article.created|date('d M Y') : '' }}</li>
+                            <li><b class="propertyname">Date de mis à jour:</b> {{ article.updated ? article.updated|date('d M Y') : '' }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

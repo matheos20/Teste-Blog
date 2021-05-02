@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .btnform{
+            display: flex;
+            justify-content: center;
+
+        }
+        a{
+            margin-top: 40px;
+            margin-left: 2px;
+        }
+        a.btn{
+            padding: .5rem 1.5rem;
+        }
+
+    </style>
+    <h1 class="text-center mt-5">Listes des Articles</h1>
+    <div class="container  mt-5">
+        <a class="btn btn-primary" href="{{ path('article_new') }}">Create new</a>
+        <table class="table table-striped mt-5">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>Date de création</th>
+                <th>Date de modification</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.Titre }}</td>
+                    <td>{{ article.Texte }}</td>
+                    <td>{{ article.created ? article.created|date('d M Y') : '' }}</td>
+                    <td>{{ article.updated ? article.updated|date('d M Y') : '' }}</td>
+                    <td>
+                        <div class="btnform">
+                            <a class="btn btn-success" href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
+                            <a class="btn btn-primary" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                            <a class="btn btn-danger" href="{{ path('article_delete', {'id': article.id}) }}">Supprimer</a>
+                        </div>
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(articles) }}
+        </div>
+    </div>
+{% endblock %}

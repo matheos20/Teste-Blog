@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+    <section class="item content">
+        <div class="container">
+            <div class="underlined-title">
+                <div class="editContent">
+                    <h1 class="text-center latestitems">LATEST ITEMS</h1>
+                </div>
+                <div class="wow-hr type_short">
+				<span class="wow-hr-h">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				</span>
+                </div>
+            </div>
+            <div class="row">
+                {% for article in articles %}
+                    <div class="col-md-4">
+                        <i class="fa fa-microphone infoareaicon"></i>
+                        <div class="infoareawrap productbox">
+                            <h1 class="text-center subtitle">{{ article.Titre }}</h1>
+                            <p>
+                                {{ article.Texte }}
+                            </p>
+                            <p class="text-center">
+                                <a href="{{ path('article_details', {'id': article.id}) }}">- voirs plus -</a>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{#
+    <div class="container mt-5">
+        <div class="row flex-wrap col-12" style="/*width: 30rem;*/">
+            {% for article in articles %}
+                <div class="col-md-4">
+                    <div>
+                        <div class="card text-center">
+                            <h5 class="card-title">{{ article.Titre }}</h5>
+                            <p class="card-text">{{ article.Texte }}</p>
+                        </div>
+                        <div class="card text-center">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ article.auteur.fullname }}</li>
+                                <li class="list-group-item">{{ article.created ? article.created|date('d M Y') : '' }}</li>
+                                <li class="list-group-item">{{ article.updated ? article.updated|date('d M Y') : '' }}</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ path('article_show', {'id': article.id}) }}" class="card-link">Voir Article</a>
+                            <a href="{{ path('article_edit', {'id': article.id}) }}" class="card-link">Modifier</a>
+                            <a href="{{ path('article_delete', {'id': article.id}) }}" class="card-link">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>#}
+{% endblock %}

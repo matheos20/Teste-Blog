@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification des Articles{% endblock %}
+
+{% block body %}
+    <style>
+        .show{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn{
+            margin-left: 5px;
+        }
+    </style>
+    <h1 class="text-center mt-5">Edit Article</h1>
+<div class="container  mt-5">
+    <a class="btn btn-success btnmodif" href="{{ path('article_index') }}">Retour à liste</a>
+    {{ include('article/_form.html.twig', {'button_label': 'Editer'}) }}
+{#    <div class="show">#}
+{#        #}
+{#        <a class="btn btn-success" href="{{ path('article_index') }}">Retour à liste</a>#}
+
+{#        {{ include('article/_delete_form.html.twig') }}#}
+{#    </div>#}
+
+</div>
+{% endblock %}
